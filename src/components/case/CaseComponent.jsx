@@ -20,7 +20,7 @@ const CaseComponent = () => {
   useEffect(() => {
     /** @type {import("@cesdk/engine").Configuration} */
     const config = {
-      theme: 'light',
+      theme: 'dark',
       initialSceneMode: 'Video',
       initialSceneURL: caseAssetPath('/templates/motion.scene'),
       license: process.env.REACT_APP_LICENSE,
@@ -38,7 +38,7 @@ const CaseComponent = () => {
         elements: {
           view: 'default',
           panels: {
-            settings: true
+            settings: false
           },
           dock: {
             groups: [
@@ -101,6 +101,8 @@ const CaseComponent = () => {
           cesdk = instance;
           cesdkRef.current = instance;
           cesdk.engine.editor.setSettingBool('page/title/show', false);
+          cesdk.engine.editor.setSettingBool('features/effectsEnabled', true);
+          cesdk.engine.editor.setSettingBool('doubleClickToCropEnabled', true);
 
           loadAssetSourceFromContentJSON(
             cesdk.engine,
